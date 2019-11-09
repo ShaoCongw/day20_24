@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>字符串</title>
+</head>
+<body>
+	<div>
+    <label>String A:
+        <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+    </label>
+    <textarea id="str-a"></textarea>
+    <label>String B:
+        <input id="radio-b" type="radio" name="str-obj" value="b">
+    </label>
+    <textarea id="str-b"></textarea>        
+    <label>Num A：<input id="num-a" type="number" value="0"></label>
+    <label>Num B：<input id="num-b" type="number" value="1"></label>
+</div>
+<div>
+    <button>获取当前选中输入的内容长度</button>
+    <button>当前选中输入中的第3个字符</button>
+    <button>把两个输入框的文字连接在一起输出（concat）</button>
+    <button>输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+    <button>输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+    <button>使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+    <button>当前选中输入框的行数</button>
+    <button>使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+    <button>把所选输入框中的内容全部转为大写</button>
+    <button>把所选输入框中的内容全部转为小写</button>
+    <button>把所选输入框中内容的半角空格全部去除</button>
+    <button>把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+</div>
+<p id="result"></p>
+	<script type="text/javascript">
+		var buttons = document.querySelectorAll("button");
+		var radioA = document.getElementById("radio-a");
+		var radioB = document.getElementById("radio-b");
+		var strA = document.getElementById("str-a");
+		var strB = document.getElementById("str-b");
+		var resultP = document.getElementById("result");
+		var numA = document.getElementById("num-a");
+		var numB = document.getElementById("num-b");
+		buttons[0].onclick = function() {
+			if(radioA.checked == true){
+				resultP.innerHTML = strA.value.length;
+			}else{
+				resultP.innerHTML = strB.value.length;
+			}
+		};
+		buttons[1].onclick = function() {
+			if(radioA.checked == true){
+				resultP.innerHTML = strA.value[2];
+			}else{
+				resultP.innerHTML = strB.value[2];
+			}
+		};
+		buttons[2].onclick = function() {
+			resultP.innerHTML = strA.value.concat(strB.value);
+		};
+		
+		buttons[3].onclick = function() {
+			resultP.innerHTML = strA.value.indexOf(strB.value);
+		};
+		buttons[4].onclick = function() {
+			resultP.innerHTML = strB.value.lastIndexOf(strA.value);
+		};
+		buttons[5].onclick = function() {
+			if(radioA.checked == true){
+
+				resultP.innerHTML = strA.value.slice(numA.value,numB.value);
+			}else{
+				resultP.innerHTML = strB.value.slice(numA.value,numB.value);
+			}
+			
+		};
+		buttons[6].onclick = function() {
+			resultP.innerHTML = strA.rows;
+		};
+
+		/*
+实现一个字符串头尾去除空格的函数
+注意需要去除的空格，包括全角、半角空格
+暂时不需要学习和使用正则表达式的方式
+*/
+function diyTrim(str) {
+    var result = "";
+
+    // do something
+
+    return result
+}
+function removeRepetition(str) {
+    var result = "";
+    var shuzu = new Array();
+    var index = 1;
+    if (str.length == 0) {
+    	return result;
+    }
+    shuzu[0] = str[0];
+    for (var i = 1; i < str.length; i++) {
+    	if(str[i] != str[i-1] && str[i] != str[i+1]){
+    		shuzu[index] = str[i];
+    		index++;
+    	}
+    }
+    result = shuzu.join();
+    return result;
+}
+
+
+	</script>
+</body>
+</html>
